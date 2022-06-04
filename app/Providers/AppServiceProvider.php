@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,9 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (app()->isLocal()) {
-            $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
-        }
+        // if (app()->isLocal()) {
+        //     $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
+        // }
     }
 
     /**
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Link::observe(\App\Observers\LinkObserver::class);
 
         \Illuminate\Pagination\Paginator::useBootstrap();
+        JsonResource::withoutWrapping();
     }
 }
