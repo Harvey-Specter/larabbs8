@@ -35,6 +35,16 @@ Route::prefix('v1')
             ->group(function () {
 
             });
+            // 登录
+        Route::post('authorizations', 'AuthorizationsController@store')
+            ->name('authorizations.store');
+       
+        // 刷新token
+        Route::put('authorizations/current', 'AuthorizationsController@update')
+            ->name('authorizations.update');
+        // 删除token
+        Route::delete('authorizations/current', 'AuthorizationsController@destroy')
+            ->name('authorizations.destroy');
     });
 
 
